@@ -27,16 +27,47 @@ function goLight(){
   mouseEnter(goBtn)
   mouseLeave(goBtn)
 }
+let flag = false;
+
+// Get the element, add a click listener...
+document.getElementById("controls").addEventListener("click", function(e) {
+	// e.target is the clicked element!
+	if(e.target === "controls") {
+		// console.log("List item ", e.target.id.replace("post-", ""), " was clicked!");
+    // console.log(e.target.id);
+    return;
+  }
+
+  let status;
+  if(e.target.id === "stopButton") {
+    status = stopLt.classList.contains('stop') ? 'on' : 'off';
+  }
+  if(e.target.id === "slowButton") {
+    status = slowLt.classList.contains('slow') ? 'on' : 'off';
+  }
+  if(e.target.id === "goButton") {
+    status = goLt.classList.contains('go') ? 'on' : 'off';
+  }
+  console.log(`${e.target.id} bulb ${status}`);
+  
+
+});
+
+
 
 function toggleLight(buttonName, lightName, className) {
-  buttonName.addEventListener("click", function() {
-    if (lightName.classList.toggle(className)){
-      console.log(`${buttonName.textContent} bulb on`)
-    } else {
-      console.log(`${buttonName.textContent} bulb off`)
-    }
-    }) 
+   buttonName.addEventListener("click", function() {
+     lightName.classList.toggle(className)})
 }
+// function toggleLight(buttonName, lightName, className) {
+//   buttonName.addEventListener("click", function() {
+//     if (lightName.classList.toggle(className)){
+//       console.log(`${buttonName.textContent} bulb on`)
+//     } else {
+//       console.log(`${buttonName.textContent} bulb off`)
+//     }
+//     }) 
+// }
 
 function mouseEnter(buttonName) {
   buttonName.addEventListener('mouseenter', e => {
